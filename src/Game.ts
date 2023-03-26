@@ -20,6 +20,10 @@ export default class Game {
         this.awayTeamScore = awayTeamScore;
     }
 
+    valueOf(): number{
+        return this.homeTeamScore+this.awayTeamScore
+    }
+
     toString(){
         return this.homeTeam + ' '+ this.homeTeamScore+ ' - '+this.awayTeam+' '+this.awayTeamScore
     }

@@ -30,4 +30,6 @@ describe('testing Game object',()=>{
         expect(()=>game.updateScore(0,1)).toThrow("Can't update score to lower than before")
     })
 
+    
+
 })

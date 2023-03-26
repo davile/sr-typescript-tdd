@@ -21,9 +21,19 @@ export default class Scoreboard {
     public getSummary() : string {
         if(this.games.length !== 0){
             let summary = ''
-            this.games.forEach(game => {
+
+            let sortedGames = this.games.sort((gameA, gameB)=>{
+                if(gameA > gameB)
+                return -1
+                else if(gameA < gameB)
+                return 1
+                else
+                return 0
+            })
+
+            sortedGames.forEach(game => {
                 if(summary!== '') summary += '\n'
-                summary += game
+                summary += game.toString()
             });
             return summary
         }

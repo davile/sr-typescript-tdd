@@ -63,6 +63,15 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(summary).toBe('Australia 0 - Italy 0');
     })
 
-    
+    test('games in summary should be sorted by sum of scores descending',()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.startNewGame(Country.Australia, Country.Italy);
+        scoreboard.updateScore(Country.Argentina, 2, Country.Germany, 3);
+        scoreboard.updateScore(Country.Australia, 3, Country.Italy, 3);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Australia 3 - Italy 3\nArgentina 2 - Germany 3');
+    })
+
 
 })
