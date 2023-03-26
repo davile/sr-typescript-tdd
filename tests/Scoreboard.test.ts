@@ -30,4 +30,12 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(summary).toBe('Argentina 0 - Germany 0\nAustralia 0 - Italy 0');
     })
 
+    test('update score of active game and show it in summary', ()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.updateScore(Country.Argentina, 2, Country.Germany, 3);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Argentina 2 - Germany 3');
+    })
+
 })
