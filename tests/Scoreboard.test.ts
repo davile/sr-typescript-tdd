@@ -1,4 +1,4 @@
-import Scoreboard from "../src/scoreboard";
+import Scoreboard from "../src/Scoreboard";
 import {Country} from "../src/Country";
 
 describe('Testing Scoreboard functionality', ()=>{
@@ -6,13 +6,6 @@ describe('Testing Scoreboard functionality', ()=>{
             const scoreboard = new Scoreboard();
             const summary = scoreboard.getSummary();
             expect(summary).toBe("")
-    })
-
-    test('when new game is started teams playing are visible in summary',()=>{
-        const scoreboard = new Scoreboard();
-        scoreboard.startNewGame(Country.Argentina, Country.Germany);
-        const summary = scoreboard.getSummary();
-        expect(summary).toBe("Argentina 0 - Germany 0");
     })
 
     test('when new game is added initial score is set to 0 - 0',()=>{

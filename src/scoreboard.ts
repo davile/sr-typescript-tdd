@@ -1,22 +1,24 @@
 import { Country } from "./Country";
+import Game from './Game';
 
 export default class Scoreboard {
-    updateScore(homeTeam: Country, homeTeamScore: number, awayTeam: Country, awayTeamScore: number) {
-        this.games[0].homeTeamScore = homeTeamScore;
-        this.games[0].awayTeamScore = awayTeamScore;
+
+    private games: Array<Game> = [];
+    
+    public updateScore(homeTeam: Country, homeTeamScore: number, awayTeam: Country, awayTeamScore: number) {
+        this.games[0].updateScore(homeTeamScore, awayTeamScore)
     }
 
-    private games: Array<{homeTeam: Country, homeTeamScore: number, awayTeam: Country, awayTeamScore: number}> = [];
-
-    startNewGame(homeTeam: Country, awayTeam: Country) {
-        this.games.push({homeTeam, homeTeamScore: 0, awayTeam, awayTeamScore: 0})
+    public startNewGame(homeTeam: Country, awayTeam: Country) {
+        this.games.push(new Game(homeTeam, awayTeam))
     }
+
     public getSummary() : string {
         if(this.games.length !== 0){
             let summary = ''
             this.games.forEach(game => {
                 if(summary!== '') summary += '\n'
-                summary += game.homeTeam + ' '+ game.homeTeamScore+' - '+game.awayTeam + ' '+game.awayTeamScore
+                summary += game
             });
             return summary
         }
