@@ -20,7 +20,7 @@ describe('Testing Scoreboard functionality', ()=>{
         scoreboard.startNewGame(Country.Argentina, Country.Germany);
         scoreboard.startNewGame(Country.Australia, Country.Italy);
         const summary = scoreboard.getSummary();
-        expect(summary).toBe('Argentina 0 - Germany 0\nAustralia 0 - Italy 0');
+        expect(summary).toBe('Australia 0 - Italy 0\nArgentina 0 - Germany 0');
     })
 
     test('update score of active game and show it in summary', ()=>{
@@ -38,7 +38,7 @@ describe('Testing Scoreboard functionality', ()=>{
         scoreboard.updateScore(Country.Argentina, 2, Country.Germany, 3);
         scoreboard.updateScore(Country.Australia, 3, Country.Italy, 2);
         const summary = scoreboard.getSummary();
-        expect(summary).toBe('Argentina 2 - Germany 3\nAustralia 3 - Italy 2');
+        expect(summary).toBe('Australia 3 - Italy 2\nArgentina 2 - Germany 3');
     })
 
     test('when updating a game that is not in progress exception is throw',()=>{
@@ -71,6 +71,18 @@ describe('Testing Scoreboard functionality', ()=>{
         scoreboard.updateScore(Country.Australia, 3, Country.Italy, 3);
         const summary = scoreboard.getSummary();
         expect(summary).toBe('Australia 3 - Italy 3\nArgentina 2 - Germany 3');
+    })
+
+    test('games in summary should be sorted by sum of scores and by most recently started if equal',()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.startNewGame(Country.Australia, Country.Italy);
+        scoreboard.startNewGame(Country.Spain,Country.Mexico);
+        scoreboard.updateScore(Country.Spain,1, Country.Mexico, 1)
+        scoreboard.updateScore(Country.Argentina, 3, Country.Germany, 3);
+        scoreboard.updateScore(Country.Australia, 3, Country.Italy, 3);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Australia 3 - Italy 3\nArgentina 3 - Germany 3\nSpain 1 - Mexico 1');
     })
 
 

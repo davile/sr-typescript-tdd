@@ -2,6 +2,7 @@ import { Country } from "./Country";
 import Game from './Game';
 
 export default class Scoreboard {
+
     private games: Array<Game> = [];
     
     public startNewGame(homeTeam: Country, awayTeam: Country) {
@@ -28,7 +29,12 @@ export default class Scoreboard {
                 else if(gameA < gameB)
                 return 1
                 else
-                return 0
+                {
+                    const gameAIndex = this.games.findIndex(game => game.homeTeam === gameA.homeTeam && game.awayTeam === gameA.awayTeam)
+                    const gameBIndex = this.games.findIndex(game => game.homeTeam === gameB.homeTeam && game.awayTeam === gameB.awayTeam)
+                    if(gameAIndex > gameBIndex) return -1 
+                    else return 1
+                }
             })
 
             sortedGames.forEach(game => {
