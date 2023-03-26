@@ -12,7 +12,14 @@ describe('Testing Scoreboard functionality', ()=>{
         const scoreboard = new Scoreboard();
         scoreboard.startNewGame(Country.Argentina, Country.Germany);
         const summary = scoreboard.getSummary();
-        expect(summary).toBe("Argentina - Germany");
+        expect(summary).toBe("Argentina 0 - Germany 0");
+    })
+
+    test('when new game is added initial score is set to 0 - 0',()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Argentina 0 - Germany 0');
     })
 
 })

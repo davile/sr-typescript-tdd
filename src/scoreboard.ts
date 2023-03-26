@@ -9,7 +9,7 @@ export default class Scoreboard {
     }
     public getSummary() : string {
         if(this.games.length !== 0){
-            return this.games[0].homeTeam + ' - ' + this.games[0].awayTeam
+            return this.games[0].homeTeam + ' 0 - ' + this.games[0].awayTeam + ' 0'
         }
         return ""
     }
