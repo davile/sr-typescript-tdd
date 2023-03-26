@@ -21,5 +21,13 @@ describe('Testing Scoreboard functionality', ()=>{
         const summary = scoreboard.getSummary();
         expect(summary).toBe('Argentina 0 - Germany 0');
     })
+    
+    test('when two games are started both are visible in summary',()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.startNewGame(Country.Australia, Country.Italy);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Argentina 0 - Germany 0\nAustralia 0 - Italy 0');
+    })
 
 })

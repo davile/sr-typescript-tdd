@@ -9,7 +9,12 @@ export default class Scoreboard {
     }
     public getSummary() : string {
         if(this.games.length !== 0){
-            return this.games[0].homeTeam + ' 0 - ' + this.games[0].awayTeam + ' 0'
+            let summary = ''
+            this.games.forEach(game => {
+                if(summary!== '') summary += '\n'
+                summary += game.homeTeam + ' 0 - '+game.awayTeam + ' 0'
+            });
+            return summary
         }
         return ""
     }
