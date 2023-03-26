@@ -46,4 +46,12 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(() => scoreboard.updateScore(Country.Australia, 3, Country.Italy, 2)).toThrow('Game not in progress')
     })
 
+    test("when game is finished it won't be shown in summary",()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.finishGame(Country.Argentina,Country.Germany);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe("")
+    })
+
 })
