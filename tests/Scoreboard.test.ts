@@ -85,5 +85,10 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(summary).toBe('Australia 3 - Italy 3\nArgentina 3 - Germany 3\nSpain 1 - Mexico 1');
     })
 
+    test("one team can't have two active games on scoreboard",()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        expect(()=> scoreboard.startNewGame(Country.Argentina, Country.Italy)).toThrow("Team can't have two active games on scoreboard")
+    })
 
 })

@@ -34,7 +34,4 @@ describe('testing Game object',()=>{
         expect(()=> {const game = new Game(Country.Australia, Country.Australia)}).toThrow("Game can't have the same home and away team")
     })
 
-
-
-
 })

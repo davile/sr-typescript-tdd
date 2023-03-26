@@ -6,6 +6,8 @@ export default class Scoreboard {
     private games: Array<Game> = [];
     
     public startNewGame(homeTeam: Country, awayTeam: Country) {
+        if(this.games.find(game => game.homeTeam === homeTeam || game.homeTeam === awayTeam || game.awayTeam === homeTeam || game.awayTeam === awayTeam) !== undefined)
+        throw Error("Team can't have two active games on scoreboard")
         this.games.push(new Game(homeTeam, awayTeam))
     }
 
