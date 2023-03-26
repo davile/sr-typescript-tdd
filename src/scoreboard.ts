@@ -6,7 +6,9 @@ export default class Scoreboard {
     private games: Array<Game> = [];
     
     public updateScore(homeTeam: Country, homeTeamScore: number, awayTeam: Country, awayTeamScore: number) {
-        this.games[0].updateScore(homeTeamScore, awayTeamScore)
+        const gameIndex = this.games.findIndex(game => game.homeTeam === homeTeam && game.awayTeam === awayTeam);
+        if(gameIndex === -1) throw new Error('Game not in progress');
+        this.games[gameIndex].updateScore(homeTeamScore, awayTeamScore)
     }
 
     public startNewGame(homeTeam: Country, awayTeam: Country) {

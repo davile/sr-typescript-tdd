@@ -31,4 +31,19 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(summary).toBe('Argentina 2 - Germany 3');
     })
 
+    test('update score of two active games and show it in summary', ()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.startNewGame(Country.Australia, Country.Italy);
+        scoreboard.updateScore(Country.Argentina, 2, Country.Germany, 3);
+        scoreboard.updateScore(Country.Australia, 3, Country.Italy, 2);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Argentina 2 - Germany 3\nAustralia 3 - Italy 2');
+    })
+
+    test('when updating a game that is not in progress exception is throw',()=>{
+        const scoreboard = new Scoreboard();
+        expect(() => scoreboard.updateScore(Country.Australia, 3, Country.Italy, 2)).toThrow('Game not in progress')
+    })
+
 })

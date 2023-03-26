@@ -1,9 +1,9 @@
 import { Country } from "./Country"
 
 export default class Game {
-    private homeTeam: Country;
+    public readonly homeTeam: Country;
     private homeTeamScore: number;
-    private awayTeam: Country;
+    public readonly awayTeam: Country;
     private awayTeamScore: number;
 
     constructor(homeTeam: Country, awayTeam: Country){
