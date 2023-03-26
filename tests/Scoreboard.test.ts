@@ -54,4 +54,13 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(summary).toBe("")
     })
 
+    test("when two games are in progress only first one is removed after finishing",()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Argentina, Country.Germany);
+        scoreboard.startNewGame(Country.Australia, Country.Italy);
+        scoreboard.finishGame(Country.Argentina, Country.Germany);
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Australia 0 - Italy 0');
+    })
+
 })

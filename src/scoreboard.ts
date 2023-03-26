@@ -15,7 +15,7 @@ export default class Scoreboard {
     }
 
     public finishGame(homeTeam: Country, awayTeam: Country) {
-        this.games.pop();
+        this.games = this.games.filter(game => game.homeTeam !== homeTeam && game.awayTeam !== awayTeam)
     }
 
     public getSummary() : string {
