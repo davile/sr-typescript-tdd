@@ -30,6 +30,10 @@ describe('testing Game object',()=>{
         expect(()=>game.updateScore(0,1)).toThrow("Can't update score to lower than before")
     })
 
+    test('home and away team need to be different',()=>{
+        expect(()=> {const game = new Game(Country.Australia, Country.Australia)}).toThrow("Game can't have the same home and away team")
+    })
+
 
 
 

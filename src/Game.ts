@@ -7,6 +7,7 @@ export default class Game {
     private awayTeamScore: number;
 
     constructor(homeTeam: Country, awayTeam: Country){
+        if(homeTeam === awayTeam) throw new Error("Game can't have the same home and away team")
         this.homeTeam = homeTeam;
         this.homeTeamScore = 0;
         this.awayTeam = awayTeam;
