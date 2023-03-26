@@ -19,4 +19,15 @@ describe('testing Game object',()=>{
         expect(game.toString()).toBe("Argentina 1 - Australia 1")
     })
 
+    test('when updating score with negative number error is throw',()=>{
+        const game = new Game(Country.Argentina, Country.Australia);
+        expect(()=>game.updateScore(-1,1)).toThrow("Scores can't be negative numbers")
+    })
+
+    test('when new score is lower than old one error is throw',()=>{
+        const game = new Game(Country.Argentina, Country.Australia);
+        game.updateScore(1,1);
+        expect(()=>game.updateScore(0,1)).toThrow("Can't update score to lower than before")
+    })
+
 })
