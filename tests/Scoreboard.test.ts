@@ -91,4 +91,21 @@ describe('Testing Scoreboard functionality', ()=>{
         expect(()=> scoreboard.startNewGame(Country.Argentina, Country.Italy)).toThrow("Team can't have two active games on scoreboard")
     })
 
+
+    test("example test given as requirement, added to check overall functionality",()=>{
+        const scoreboard = new Scoreboard();
+        scoreboard.startNewGame(Country.Mexico, Country.Canada);
+        scoreboard.updateScore(Country.Mexico,0, Country.Canada, 5)
+        scoreboard.startNewGame(Country.Spain, Country.Brazil);
+        scoreboard.updateScore(Country.Spain,10, Country.Brazil, 2)
+        scoreboard.startNewGame(Country.Germany,Country.France);
+        scoreboard.updateScore(Country.Germany,2, Country.France, 2)
+        scoreboard.startNewGame(Country.Uruguay,Country.Italy);
+        scoreboard.updateScore(Country.Uruguay,6, Country.Italy, 6)
+        scoreboard.startNewGame(Country.Argentina,Country.Australia);
+        scoreboard.updateScore(Country.Argentina,3, Country.Australia, 1)
+        const summary = scoreboard.getSummary();
+        expect(summary).toBe('Uruguay 6 - Italy 6\nSpain 10 - Brazil 2\nMexico 0 - Canada 5\nArgentina 3 - Australia 1\nGermany 2 - France 2');
+    })
+
 })

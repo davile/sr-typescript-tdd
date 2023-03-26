@@ -17,6 +17,7 @@ export default class Game {
     updateScore(homeTeamScore, awayTeamScore){
         if(homeTeamScore < 0 || awayTeamScore < 0) throw new Error("Scores can't be negative numbers");
         if(this.homeTeamScore > homeTeamScore || this.awayTeamScore > awayTeamScore) throw new Error("Can't update score to lower than before")
+        if(homeTeamScore % 1 !== 0 || awayTeamScore % 1 !== 0) throw Error("Game score can only be updated by absolute value")
         this.homeTeamScore = homeTeamScore;
         this.awayTeamScore = awayTeamScore;
     }

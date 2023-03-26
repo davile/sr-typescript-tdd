@@ -5,5 +5,8 @@ export const enum Country {
     Uruguay = 'Uruguay',
     Italy = 'Italy',
     Argentina = 'Argentina',
-    Australia = 'Australia'
+    Australia = 'Australia',
+    Canada = 'Canada',
+    Brazil = 'Brazil',
+    France = 'France'
 }

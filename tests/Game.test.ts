@@ -34,4 +34,9 @@ describe('testing Game object',()=>{
         expect(()=> {const game = new Game(Country.Australia, Country.Australia)}).toThrow("Game can't have the same home and away team")
     })
 
+    test('game scores can only be updated by absolute values',()=>{
+        const game = new Game(Country.Argentina, Country.Australia);
+        expect(()=>game.updateScore(2.2,1)).toThrow("Game score can only be updated by absolute value")
+    })
+
 })
